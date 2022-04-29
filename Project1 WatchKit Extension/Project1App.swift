@@ -18,6 +18,8 @@ struct Project1App: App {
 
 
 /*
+ // MARK: - LIBRARIES
+ 
  // MARK: - STATIC PROPERTIES
  // MARK: - PROPERTY WRAPPERS
  // MARK: - PROPERTIES
@@ -26,8 +28,7 @@ struct Project1App: App {
  // MARK: - INITIALIZERS
  // MARK: - METHODS
  // MARK: - HELPER METHODS
- */
-/*
+
  // PREVIEWS /////////////////
  
  // MARK: - STATIC PROPERTIES

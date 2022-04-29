@@ -49,7 +49,7 @@ struct ContentView: View {
                 .onDelete(perform: delete)
             }
         }
-        .navigationTitle(Text("NoteDictate"))
+        .navigationTitle("NoteDictate")
     }
     
     

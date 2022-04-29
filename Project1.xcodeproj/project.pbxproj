@@ -17,6 +17,7 @@
 		C53F14C12819E4F500DA7F07 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C53F14C02819E4F500DA7F07 /* Preview Assets.xcassets */; };
 		C53F14D32819E72A00DA7F07 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F14D22819E72A00DA7F07 /* Note.swift */; };
 		C53F14E0281BC0D900DA7F07 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F14DF281BC0D900DA7F07 /* DetailView.swift */; };
+		C53F14E2281BC8DC00DA7F07 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F14E1281BC8DC00DA7F07 /* CreditsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		C53F14C22819E4F500DA7F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53F14D22819E72A00DA7F07 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C53F14DF281BC0D900DA7F07 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C53F14E1281BC8DC00DA7F07 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				C53F14B72819E4F400DA7F07 /* ContentView.swift */,
 				C53F14DF281BC0D900DA7F07 /* DetailView.swift */,
+				C53F14E1281BC8DC00DA7F07 /* CreditsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				C53F14B82819E4F400DA7F07 /* ContentView.swift in Sources */,
 				C53F14BA2819E4F400DA7F07 /* Project1App.swift in Sources */,
 				C53F14BC2819E4F400DA7F07 /* ComplicationController.swift in Sources */,
+				C53F14E2281BC8DC00DA7F07 /* CreditsView.swift in Sources */,
 				C53F14E0281BC0D900DA7F07 /* DetailView.swift in Sources */,
 				C53F14D32819E72A00DA7F07 /* Note.swift in Sources */,
 			);

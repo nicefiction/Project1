@@ -17,8 +17,13 @@ struct DetailView: View {
     // MARK: - COMPUTED PROPERTIES
     var body: some View {
         
-        Text("\(note.text)")
-            .navigationTitle("Note \(index) of \(total)")
+        NavigationLink(destination: {
+            CreditsView()
+        },
+                       label: {
+            Text("\(note.text)")
+                .navigationTitle("Note \(index + 1) of \(total)")
+        })
     }
     
     
@@ -43,7 +48,7 @@ struct DeatilView_Previews: PreviewProvider {
         
         DetailView(index: 1,
                    note: Note.init(id: UUID.init(),
-                                   text: "Friday"),
+                                   text: "Hello 👋 World 🌍"),
                    total: 3)
     }
 }
