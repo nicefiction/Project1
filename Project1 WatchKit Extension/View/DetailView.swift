@@ -10,6 +10,7 @@ struct DetailView: View {
     // MARK: - PROPERTIES
     let index: Int
     let note: Note
+    let total: Int
     
     
     
@@ -17,7 +18,7 @@ struct DetailView: View {
     var body: some View {
         
         Text("\(note.text)")
-            .navigationTitle("Note \(index)")
+            .navigationTitle("Note \(index) of \(total)")
     }
     
     
@@ -42,6 +43,7 @@ struct DeatilView_Previews: PreviewProvider {
         
         DetailView(index: 1,
                    note: Note.init(id: UUID.init(),
-                                   text: "Friday"))
+                                   text: "Friday"),
+                   total: 3)
     }
 }

@@ -39,7 +39,8 @@ struct ContentView: View {
                     
                     NavigationLink(destination: {
                         DetailView(index: eachIndexNumber,
-                                   note: notes[eachIndexNumber])
+                                   note: notes[eachIndexNumber],
+                                   total: notes.count)
                     }, label: {
                         Text("\(notes[eachIndexNumber].text)")
                             .lineLimit(1)
