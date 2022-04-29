@@ -8,6 +8,7 @@ struct ContentView: View {
     // MARK: - STATIC PROPERTIES
     // MARK: - PROPERTY WRAPPERS
     @State private var notes = Array<Note>.init()
+    @State private var text: String = ""
     
     
     
@@ -16,19 +17,30 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Text("\(notes.count) \( notes.count == 1 ? "note" : "notes")")
-                .padding()
-            Button("Add Note",
-                   action: {
-                let newNote = Note.init(id: UUID.init(),
-                                        text: "Note")
-                notes.append(newNote)
-            })
+            HStack {
+                Text("\(notes.count) \( notes.count == 1 ? "note" : "notes")")
+                    .padding()
+                Button {
+                    guard text.isEmpty == false
+                    else { return }
+                    let newNote = Note.init(id: UUID.init(),
+                                            text: text)
+                    notes.append(newNote)
+                    text = ""
+                } label: {
+                    Image(systemName: "plus")
+                        .padding()
+                }
+            }
+            // .fixedSize()
+            // .buttonStyle(.borderedProminent)
+            .buttonStyle(BorderedButtonStyle(tint: .blue))
             List {
                 ForEach(0..<notes.count, id: \.self) {
                     Text("\(notes[$0].text) \($0 + 1)")
                 }
             }
+            TextField("Write a new note...", text: $text)
         }
     }
     
