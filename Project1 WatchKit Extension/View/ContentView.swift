@@ -18,8 +18,7 @@ struct ContentView: View {
         
         VStack {
             HStack {
-                Text("\(notes.count) \( notes.count == 1 ? "note" : "notes")")
-                    .padding()
+                TextField("Text...", text: $text)
                 Button {
                     guard text.isEmpty == false
                     else { return }
@@ -36,12 +35,20 @@ struct ContentView: View {
             // .buttonStyle(.borderedProminent)
             .buttonStyle(BorderedButtonStyle(tint: .blue))
             List {
-                ForEach(0..<notes.count, id: \.self) {
-                    Text("\(notes[$0].text) \($0 + 1)")
+                ForEach(0..<notes.count, id: \.self) { (eachIndexNumber: Int) in
+                    
+                    NavigationLink(destination: {
+                        DetailView(index: eachIndexNumber,
+                                   note: notes[eachIndexNumber])
+                    }, label: {
+                        Text("\(notes[eachIndexNumber].text)")
+                            .lineLimit(1)
+                    })
                 }
+                .onDelete(perform: delete)
             }
-            TextField("Write a new note...", text: $text)
         }
+        .navigationTitle(Text("NoteDictate"))
     }
     
     
@@ -49,6 +56,13 @@ struct ContentView: View {
     // MARK: - STATIC METHODS
     // MARK: - INITIALIZERS
     // MARK: - METHODS
+    func delete(at offsetts: IndexSet)
+    -> Void {
+        
+        withAnimation {
+            notes.remove(atOffsets: offsetts)
+        }
+    }
     // MARK: - HELPER METHODS
 }
 
