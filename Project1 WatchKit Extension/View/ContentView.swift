@@ -7,6 +7,7 @@ struct ContentView: View {
     
     // MARK: - STATIC PROPERTIES
     // MARK: - PROPERTY WRAPPERS
+    @AppStorage("lineCount") var lineCount = 1
     @State private var notes = Array<Note>.init()
     @State private var text: String = ""
     
@@ -26,6 +27,7 @@ struct ContentView: View {
                                             text: text)
                     notes.append(newNote)
                     text = ""
+                    save()
                 } label: {
                     Image(systemName: "plus")
                         .padding()
@@ -43,13 +45,22 @@ struct ContentView: View {
                                    total: notes.count)
                     }, label: {
                         Text("\(notes[eachIndexNumber].text)")
-                            .lineLimit(1)
+                            .lineLimit(lineCount)
                     })
                 }
                 .onDelete(perform: delete)
+                Button("Add Linecount: \(lineCount)",
+                       action: {
+                    lineCount += 1
+                    if lineCount == 4 {
+                        lineCount = 1
+                    }
+                })
             }
         }
         .navigationTitle("NoteDictate")
+        /// Call the `load() `method when our view appears:
+        .onAppear(perform: load)
     }
     
     
@@ -63,7 +74,55 @@ struct ContentView: View {
         withAnimation {
             notes.remove(atOffsets: offsetts)
         }
+        
+        save()
     }
+    
+    /// Run the `getDocumentsDirectory()`method
+    /// to ask for the app’s documents directory.
+    func getDocumentsDirectory()
+    -> URL {
+        
+        let paths = FileManager.default.urls(for: .documentDirectory,
+                                             in: .userDomainMask)
+        return paths[0]
+    }
+    
+    /// Run the `save()` method
+    /// every time a note is added or removed.
+    func save()
+    -> Void {
+        
+        do {
+            let data = try JSONEncoder().encode(notes)
+            let url = getDocumentsDirectory().appendingPathComponent("notes")
+            try data.write(to: url)
+        } catch {
+            print("Save failed")
+        }
+    }
+    
+    /// A method for loading data back from disk:
+    func load()
+    -> Void {
+        /// Rather than changing our notes property immediately,
+        /// we need to wait a tiny, tiny amount of time
+        /// — just enough so that SwiftUI has finished loading its initial user interface before we try to change it.
+        /// This can be doing with a specific method call: `DispatchQueue.main.async()`:
+        DispatchQueue.main.async {
+            do {
+                let url = getDocumentsDirectory().appendingPathComponent("notes")
+                let data = try Data(contentsOf: url)
+                notes = try JSONDecoder().decode([Note].self,
+                                                 from: data)
+            } catch {
+                // do nothing
+            }
+        }
+    }
+    
+    
+    
     // MARK: - HELPER METHODS
 }
 

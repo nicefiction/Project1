@@ -1,9 +1,10 @@
-// MARK: - LIBRARIES
+// MARK: LIBRARIES
 import Foundation
 
 
 
-struct Note: Identifiable {
+struct Note: Codable,
+             Identifiable {
     
     // MARK: - STATIC PROPERTIES
     // MARK: - PROPERTY WRAPPERS
